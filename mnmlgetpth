@@ -1,0 +1,12 @@
+#!/bin/sh
+
+CURR=$(cat -)
+
+for key in "$@"; do
+    case ${key#[-+]} in
+      *[!0-9]* | '') CURR=$(echo "$CURR" | mnmapget "$key") ;;
+      * ) CURR=$(echo "$CURR" | mnmlstget "$key") ;;
+    esac
+done
+
+echo "$CURR"
