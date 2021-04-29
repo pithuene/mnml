@@ -18,6 +18,7 @@ install: mnmapget/mnmapget mnmlstget/mnmlstget mnmlstnsrt/mnmlstnsrt mnmlid/mnml
 	cp mnmlstnsrt/mnmlstnsrt $(DESTDIR)$(PREFIX)/bin/mnmlstnsrt
 	cp mnmlid/mnmlid 			 	 $(DESTDIR)$(PREFIX)/bin/mnmlid
 	cp mnmlgetpth 			 		 $(DESTDIR)$(PREFIX)/bin/mnmlgetpth
+	cp mnmapkeys 			 		   $(DESTDIR)$(PREFIX)/bin/mnmapkeys
 
 .PHONY: uninstall
 uninstall:
@@ -25,6 +26,7 @@ uninstall:
 	rm -f $(DESTDIR)$(PREFIX)/bin/mnmlstget; \
 	rm -f $(DESTDIR)$(PREFIX)/bin/mnmlstnsrt; \
 	rm -f $(DESTDIR)$(PREFIX)/bin/mnmlid; \
+	rm -f $(DESTDIR)$(PREFIX)/bin/mnmapkeys; \
 	rm -f $(DESTDIR)$(PREFIX)/bin/mnmlgetpth
 
 mnmapget/mnmapget: mnmapget/mnmapget.go
