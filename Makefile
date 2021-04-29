@@ -1,27 +1,30 @@
 PREFIX = /usr/local
 
 .PHONY: all
-all: mnmapget/mnmapget mnmlstget/mnmlstget mnmlstnsrt/mnmlstnsrt
+all: mnmapget/mnmapget mnmlstget/mnmlstget mnmlstnsrt/mnmlstnsrt mnmlid/mnmlid
 
 .PHONY: clean
 clean:
 	rm mnmapget/mnmapget; \
 	rm mnmlstget/mnmlstget; \
-	rm mnmlstnsrt/mnmlstnsrt
+	rm mnmlstnsrt/mnmlstnsrt; \
+	rm mnmlid/mnmlid
 
 .PHONY: install
-install: mnmapget/mnmapget mnmlstget/mnmlstget mnmlstnsrt/mnmlstnsrt
+install: mnmapget/mnmapget mnmlstget/mnmlstget mnmlstnsrt/mnmlstnsrt mnmlid/mnmlid
 	mkdir -p $(DESTDIR)$(PREFIX)/bin
 	cp mnmapget/mnmapget     $(DESTDIR)$(PREFIX)/bin/mnmapget
 	cp mnmlstget/mnmlstget   $(DESTDIR)$(PREFIX)/bin/mnmlstget
 	cp mnmlstnsrt/mnmlstnsrt $(DESTDIR)$(PREFIX)/bin/mnmlstnsrt
-	cp mnmlgetpth 			 $(DESTDIR)$(PREFIX)/bin/mnmlgetpth
+	cp mnmlid/mnmlid 			 	 $(DESTDIR)$(PREFIX)/bin/mnmlid
+	cp mnmlgetpth 			 		 $(DESTDIR)$(PREFIX)/bin/mnmlgetpth
 
 .PHONY: uninstall
 uninstall:
 	rm -f $(DESTDIR)$(PREFIX)/bin/mnmapget; \
 	rm -f $(DESTDIR)$(PREFIX)/bin/mnmlstget; \
 	rm -f $(DESTDIR)$(PREFIX)/bin/mnmlstnsrt; \
+	rm -f $(DESTDIR)$(PREFIX)/bin/mnmlid; \
 	rm -f $(DESTDIR)$(PREFIX)/bin/mnmlgetpth
 
 mnmapget/mnmapget: mnmapget/mnmapget.go
@@ -33,3 +36,5 @@ mnmlstget/mnmlstget: mnmlstget/mnmlstget.go
 mnmlstnsrt/mnmlstnsrt: mnmlstnsrt/mnmlstnsrt.go
 	go build -o mnmlstnsrt/mnmlstnsrt mnmlstnsrt/mnmlstnsrt.go
 
+mnmlid/mnmlid: mnmlid/mnmlid.c
+	c89 -D_POSIX_C_SOURCE=199309L -o mnmlid/mnmlid mnmlid/mnmlid.c
