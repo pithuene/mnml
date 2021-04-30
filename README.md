@@ -33,7 +33,8 @@ Programs
 This repository includes programs to interact with data in the format described above. All programs expect input from `stdin` and print to `stdout` so they can be chained. To read from file you need to `cat` it yourself.
 
 - `mnmapget <key>` — Get value <u>key</u> from a map
+- `mnmapkeys` — Get all keys of a map
 - `mnmlstget <n>` — Get the <u>n</u>-th entry from a list
 - `mnmlstnsrt <index> <value>` — Insert <u>value</u> into a list at <u>index</u>
 - `mnmlgetpth <key | index>...` — Get the value at a given path from a nested document
-
+- `mnmlid` — Generate a time based id. Useful for generating map keys. This program doesn't take any input.
