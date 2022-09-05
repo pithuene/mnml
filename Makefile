@@ -39,4 +39,8 @@ mnmlstnsrt/mnmlstnsrt: mnmlstnsrt/mnmlstnsrt.go
 	go build -o mnmlstnsrt/mnmlstnsrt mnmlstnsrt/mnmlstnsrt.go
 
 mnmlid/mnmlid: mnmlid/mnmlid.c
-	c89 -D_POSIX_C_SOURCE=199309L -o mnmlid/mnmlid mnmlid/mnmlid.c
+	$(CC) -std=c89 -D_POSIX_C_SOURCE=199309L -o mnmlid/mnmlid mnmlid/mnmlid.c
+
+.PHONY: nix-build
+nix-build:
+	nix-build -E "with import <nixpkgs> {}; callPackage ./default.nix {}"

@@ -1,0 +1,20 @@
+This is a sample mnml file.
+Only lines starting with "- " or "<key>:" are processed, everything else will be ignored.
+This makes it possible to add bits of structured data throughout a text document.
+A mnml file is made up of
+datatypes:
+  - maps
+  - lists
+  - values
+    (all values are strings)
+
+Here is another example
+metadata:
+  title: A mnml file
+  author: Pit Hüne
+  description:
+    A short introduction to 
+    the mnml language written
+    as an mnml file.
+
+Content can be queried using the mnmap, mnmlst and mnmlpth programs.
